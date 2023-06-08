@@ -4,7 +4,7 @@ import styles from './page.module.css'
 
 const Login = () => {
     return (
-        <div>Login</div>
+        <div className={styles.container}>Login</div>
     )
 }
 

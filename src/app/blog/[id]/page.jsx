@@ -4,10 +4,7 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation';
 
 async function getData(id) {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-        // next: { revalidate: 10 } --> revalidates every 10 sec
-        cache: "no-store"
-    });
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
 
     if (!res.ok) {
         return notFound()
@@ -17,7 +14,7 @@ async function getData(id) {
 }
 
 const BlogPost = async ({ params }) => {
-    const data = getData(params.id);
+    const data = await getData(params.id);
 
     return (
         <div className={styles.container}>
